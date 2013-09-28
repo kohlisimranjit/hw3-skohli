@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<uriSpecifier xmlns="http://uima.apache.org/resourceSpecifier">
+  <resourceType>AnalysisEngine</resourceType>
+ <!--  <resourceType>AnalysisEngine | CasConsumer </resourceType>-->
+  <uri>[URI]</uri> 
+  <protocol>SOAP</protocol> 
+  <!--  <protocol>SOAP | SOAPwithAttachments | Vinci</protocol>  -->
+  <timeout>1000</timeout>
+  <parameters>
+    <parameter name="VNS_HOST" value="some.internet.ip.name-or-address"/>
+    <parameter name="VNS_PORT" value="9000"/>
+    <parameter name="GetMetaDataTimeout" value="1000"/>
+  </parameters> 
+</uriSpecifier>
