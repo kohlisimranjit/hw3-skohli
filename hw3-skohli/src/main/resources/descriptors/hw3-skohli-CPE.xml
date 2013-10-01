@@ -4,6 +4,14 @@
             <descriptor>
                 <import location="FileSystemCollectionReader.xml"/>
             </descriptor>
+            <configurationParameterSettings>
+                <nameValuePair>
+                    <name>InputDirectory</name>
+                    <value>
+                        <string>/home/richie/git/hw3-skohli/hw3-skohli/src/main/resources/inputData</string>
+                    </value>
+                </nameValuePair>
+            </configurationParameterSettings>
         </collectionIterator>
     </collectionReader>
     <casProcessors casPoolSize="3" processingUnitThreadCount="1">

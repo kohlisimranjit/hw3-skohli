@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngine_impl;
+//import org.apache.uima.adapter.jms.client.BaseUIMAAsynchronousEngine_impl;
 import org.apache.uima.aae.client.UimaASProcessStatus;
 import org.apache.uima.aae.client.UimaAsBaseCallbackListener;
 import org.apache.uima.aae.client.UimaAsynchronousEngine;
@@ -18,8 +18,8 @@ import org.apache.uima.resource.metadata.ProcessingResourceMetaData;
 
 public class UimaAsynchronousEngineClientImpl //implements UimaAsynchronousEngine 
 {
-
-/*	@Override
+/*
+	@Override
 	public void addStatusCallbackListener(UimaAsBaseCallbackListener arg0) {
 		// TODO Auto-generated method stub
 		
@@ -142,7 +142,7 @@ public class UimaAsynchronousEngineClientImpl //implements UimaAsynchronousEngin
 		// TODO Auto-generated method stub
 		
 	}
-*/
+
 	
 	
 	
@@ -241,4 +241,4 @@ class MyStatusCallbackListener extends UimaAsBaseCallbackListener {
 	// ...
 	}
 	// Add other required callback methods below...
-	}
+*/	}
