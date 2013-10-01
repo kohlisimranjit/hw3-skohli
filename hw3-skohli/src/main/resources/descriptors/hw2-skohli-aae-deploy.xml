@@ -6,7 +6,7 @@
   <deployment protocol="jms" provider="activemq">
     <casPool numberOfCASes="1" initialFsHeapSize="2000000"/>
     <service>
-      <inputQueue endpoint="QAqueue" brokerURL="tcp://localhost:61616" prefetch="0"/>
+      <inputQueue endpoint="QAqueue" brokerURL="tcp://richie-Satellite-S55-A:61616" prefetch="0"/>
       <topDescriptor>
 <import location="/home/richie/git/hw3-skohli/hw3-skohli/src/main/resources/descriptors/hw2-skohli-aae.xml"/>
       </topDescriptor>
@@ -38,6 +38,14 @@
             </asyncAggregateErrorConfiguration>
           </analysisEngine>
           <analysisEngine key="TokenAnnotator" async="false">
+            <scaleout numberOfInstances="1"/>
+            <asyncAggregateErrorConfiguration>
+              <getMetadataErrors maxRetries="0" timeout="0" errorAction="terminate"/>
+              <processCasErrors maxRetries="0" timeout="0" continueOnRetryFailure="false" thresholdCount="0" thresholdWindow="0" thresholdAction="terminate"/>
+              <collectionProcessCompleteErrors timeout="0" additionalErrorAction="terminate"/>
+            </asyncAggregateErrorConfiguration>
+          </analysisEngine>
+          <analysisEngine key="Evaluator" async="false">
             <scaleout numberOfInstances="1"/>
             <asyncAggregateErrorConfiguration>
               <getMetadataErrors maxRetries="0" timeout="0" errorAction="terminate"/>

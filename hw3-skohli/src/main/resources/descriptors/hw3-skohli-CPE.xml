@@ -4,26 +4,12 @@
             <descriptor>
                 <import location="FileSystemCollectionReader.xml"/>
             </descriptor>
-            <configurationParameterSettings>
-                <nameValuePair>
-                    <name>InputDirectory</name>
-                    <value>
-                        <string>/home/richie/git/hw3-skohli/hw3-skohli/src/main/resources/inputData</string>
-                    </value>
-                </nameValuePair>
-                <nameValuePair>
-                    <name>Encoding</name>
-                    <value>
-                        <string>UTF-8</string>
-                    </value>
-                </nameValuePair>
-            </configurationParameterSettings>
         </collectionIterator>
     </collectionReader>
     <casProcessors casPoolSize="3" processingUnitThreadCount="1">
-        <casProcessor deployment="integrated" name="hw2-skohli-aae">
+        <casProcessor deployment="integrated" name="scnlp-skohli-client.xml">
             <descriptor>
-                <import location="hw2-skohli-aae.xml"/>
+                <import location="scnlp-skohli-client.xml"/>
             </descriptor>
             <deploymentParameters/>
             <errorHandling>
