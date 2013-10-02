@@ -15,9 +15,9 @@
         </collectionIterator>
     </collectionReader>
     <casProcessors casPoolSize="3" processingUnitThreadCount="1">
-        <casProcessor deployment="integrated" name="scnlp-skohli-client.xml">
+        <casProcessor deployment="integrated" name="hw2-skohli-aae">
             <descriptor>
-                <import location="scnlp-skohli-client.xml"/>
+                <import location="hw2-skohli-aae.xml"/>
             </descriptor>
             <deploymentParameters/>
             <errorHandling>

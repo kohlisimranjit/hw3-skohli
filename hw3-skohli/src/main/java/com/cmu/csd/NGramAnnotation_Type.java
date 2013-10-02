@@ -12,7 +12,7 @@ import org.apache.uima.cas.Type;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Sat Sep 28 11:34:06 EDT 2013
+ * Updated by JCasGen Wed Oct 02 15:15:02 EDT 2013
  * @generated */
 public class NGramAnnotation_Type extends Annotation_Type {
   /** @generated */

@@ -16,7 +16,7 @@ import edu.cmu.deiis.types.Annotation_Type;
 import org.apache.uima.jcas.cas.AnnotationBase_Type;
 
 /** 
- * Updated by JCasGen Sat Sep 28 13:13:52 EDT 2013
+ * Updated by JCasGen Wed Oct 02 15:15:02 EDT 2013
  * @generated */
 public class Document_Type extends Annotation_Type {
   /** @generated */
