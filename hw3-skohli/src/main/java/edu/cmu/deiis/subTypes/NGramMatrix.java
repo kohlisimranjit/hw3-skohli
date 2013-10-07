@@ -12,8 +12,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Wed Oct 02 15:15:02 EDT 2013
- * XML source: /home/richie/git/hw3-skohli/hw3-skohli/src/main/resources/descriptors/hw2-skohli-aae.xml
+ * Updated by JCasGen Mon Oct 07 00:25:34 EDT 2013
+ * XML source: /home/richie/git/hw3-skohli/hw3-skohli/src/main/resources/hw2-skohli-aae.xml
  * @generated */
 public class NGramMatrix extends Annotation {
   /** @generated

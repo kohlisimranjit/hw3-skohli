@@ -20,7 +20,13 @@ import edu.cmu.deiis.subTypes.Document;
 import edu.cmu.deiis.subTypes.NGramMatrix;
 import edu.cmu.deiis.subTypes.TokenizedDocument;
 import edu.cmu.deiis.subTypes.TokenizedSentence;
-
+import org.cleartk.util.TypeSystem;
+import org.cleartk.token.TypeSystem;
+import org.cleartk.ne.TypeSystem;
+import org.cleartk.syntax.constituent.TypeSystem;
+import org.cleartk.syntax.dependency.TypeSystem;
+import org.cleartk.srl.TypeSystem;
+import org.cleartk.timeml.TypeSystem;
 public class AnswerScorer extends JCasAnnotator_ImplBase {
 	static int intC = 0;
 

@@ -24,6 +24,9 @@
  <delegateAnalysisEngine key="Evaluator">
       <import location="./descriptors/Evaluator.xml"/>
     </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="scnlp-skohli-client">
+      <import location="./scnlp-skohli-client.xml"/>
+    </delegateAnalysisEngine>
     <!--  <delegateAnalysisEngine key="Evaluator">
       <import location="./Evaluator.xml"/>
     </delegateAnalysisEngine> -->
@@ -55,10 +58,11 @@
         <node>TestElementAnnotator</node>
         <node>TokenAnnotator</node>
       <!--  <node>scnlp-skohli-client</node>-->
+        <node>scnlp-skohli-client</node>
         <node>NGramAnnotator</node>
-        <node>AnswerScorer</node>
        
-        <node>Evaluator</node>
+        <node>AnswerScorer</node>
+      <node>Evaluator</node>
       </fixedFlow>
     </flowConstraints>
     <fsIndexCollection/>

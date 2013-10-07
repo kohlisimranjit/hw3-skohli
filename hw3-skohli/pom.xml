@@ -84,6 +84,11 @@
 			<artifactId>uimaj-as-jms</artifactId>
 			<version>2.4.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.cleartk</groupId>
+			<artifactId>cleartk-type-system</artifactId>
+			<version>1.2.0</version>
+		</dependency>
 	</dependencies>
 	<scm>
 		<connection>scm:git:git@github.com:kohlisimranjit/hw3-skohli.git</connection>

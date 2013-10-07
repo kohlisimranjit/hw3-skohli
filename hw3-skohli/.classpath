@@ -29,5 +29,9 @@
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/home/richie/Desktop/MyShortCuts/SETUPS/cleartk-release-1.4.1/lib/cleartk-type-system-1.2.0.jar"/>
+	<classpathentry kind="lib" path="/home/richie/Desktop/MyShortCuts/SETUPS/cleartk-release-1.4.1/lib/cleartk-maltparser-0.8.2.jar"/>
+	<classpathentry kind="lib" path="/home/richie/Desktop/MyShortCuts/SETUPS/cleartk-release-1.4.1/lib/cleartk-opennlp-tools-0.10.3.jar"/>
+	<classpathentry kind="lib" path="/home/richie/Desktop/MyShortCuts/SETUPS/cleartk-release-1.4.1/lib/cleartk-clearparser-0.7.3.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

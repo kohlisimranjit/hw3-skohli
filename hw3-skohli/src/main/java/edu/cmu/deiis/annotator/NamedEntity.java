@@ -6,6 +6,7 @@ import java.util.Properties;
 
 import edu.stanford.nlp.dcoref.CorefChain;
 import edu.stanford.nlp.dcoref.CorefCoreAnnotations.CorefChainAnnotation;
+import edu.stanford.nlp.ling.CoreAnnotations.LemmaAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.NamedEntityTagAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.PartOfSpeechAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
@@ -29,9 +30,11 @@ public class NamedEntity {
     StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 
     // read some text in the text variable
-    String text = "John loves Mary";
-    text = "It is Mary loves John";
-System.out.println(text);
+    String text="";
+    text = "John loves Mary";
+    //text = "It is Mary loves John";
+    text="Lincoln was shot by Booth";
+    System.out.println(text);
     // create an empty Annotation just with the given text
     Annotation document = new Annotation(text);
 
@@ -41,8 +44,12 @@ System.out.println(text);
     // these are all the sentences in this document
     // a CoreMap is essentially a Map that uses class objects as keys and has values with custom types
     List<CoreMap> sentences = document.get(SentencesAnnotation.class);
-int i=0;
-    for(CoreMap sentence: sentences) {
+//int i=0;
+
+    for(int i=0; i<sentences.size();i++) {
+    	System.out.println(i);
+    	CoreMap sentence = sentences.get(i);    	
+    	
       // traversing the words in the current sentence
       // a CoreLabel is a CoreMap with additional token-specific methods
       for (CoreLabel token: sentence.get(TokensAnnotation.class)) {
@@ -52,8 +59,8 @@ int i=0;
         String pos = token.get(PartOfSpeechAnnotation.class);
         // this is the NER label of the token
         String ne = token.get(NamedEntityTagAnnotation.class);       
-      
-      System.out.println(i +token.originalText()+"\t"+pos+"\t" +ne+"\t"+word);
+        String lemmaString = token.get(LemmaAnnotation.class); 
+      System.out.println(i +"\t"+lemmaString+"\t"+token.originalText()+"\t"+pos+"\t" +ne);
       i++;
       }
 
