@@ -39,13 +39,13 @@ public class AnswerScorer extends JCasAnnotator_ImplBase {
 		
 		Iterator<Annotation> cleartkSentenceIterator = cleartkSentenceIndex.iterator();
 		
-		
+		System.out.println("Sentence Iterator");
 		while(cleartkSentenceIterator.hasNext())
 		{
 			Sentence sentence=(Sentence) cleartkSentenceIterator.next();
 		
 		
-		System.out.println(sentence.getBegin()+"\t"+sentence.getScore());
+		System.out.println(sentence.toString()+"\t"+sentence.getCoveredText()+"\t"+sentence.getBegin()+"\t"+sentence.getScore());
 		}
 		
 		

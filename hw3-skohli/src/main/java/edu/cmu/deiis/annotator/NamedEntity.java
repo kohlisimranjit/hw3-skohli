@@ -18,14 +18,16 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation;
 import edu.stanford.nlp.trees.Tree;
+import edu.stanford.nlp.trees.TreeCoreAnnotations.TreeAnnotation;
 import edu.stanford.nlp.util.CoreMap;
+import edu.stanford.nlp.util.TypesafeMap.Key;
 
 public class NamedEntity {
 	
 	static void func()
 	{
 	Properties props = new Properties();
- //   props.put("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
+ props.put("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
 	props.put("annotators","tokenize, ssplit,pos, lemma, ner");
     StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 
@@ -48,8 +50,15 @@ public class NamedEntity {
 
     for(int i=0; i<sentences.size();i++) {
     	System.out.println(i);
-    	CoreMap sentence = sentences.get(i);    	
+    
+    	CoreMap sentence=sentences.get(i);
+    	 Tree tree = sentence.get(TreeAnnotation.class);
+
+        // this is the Stanford dependency graph of the current sentence
+        SemanticGraph dependencies = sentence.get(CollapsedCCProcessedDependenciesAnnotation.class);
+    	//CoreMap sentence = sentences.get(i);    	
     	
+    //	sentence.get( SemanticGraph.class);
       // traversing the words in the current sentence
       // a CoreLabel is a CoreMap with additional token-specific methods
       for (CoreLabel token: sentence.get(TokensAnnotation.class)) {
@@ -60,6 +69,8 @@ public class NamedEntity {
         // this is the NER label of the token
         String ne = token.get(NamedEntityTagAnnotation.class);       
         String lemmaString = token.get(LemmaAnnotation.class); 
+       
+        //token.get(Dcore)
       System.out.println(i +"\t"+lemmaString+"\t"+token.originalText()+"\t"+pos+"\t" +ne);
       i++;
       }
@@ -68,7 +79,7 @@ public class NamedEntity {
     //  Tree tree = sentence.get(TreeAnnotation.class);
 
       // this is the Stanford dependency graph of the current sentence
-      SemanticGraph dependencies = sentence.get(CollapsedCCProcessedDependenciesAnnotation.class);
+     // SemanticGraph dependencies = sentence.get(CollapsedCCProcessedDependenciesAnnotation.class);
     }
 
     // This is the coreference link graph
