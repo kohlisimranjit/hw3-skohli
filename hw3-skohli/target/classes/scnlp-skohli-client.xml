@@ -4,14 +4,14 @@ org.apache.uima.aae.jms_adapter.JmsAnalysisEngineServiceAdapter
 </resourceClassName>
 <parameters>
 <parameter name="brokerURL"
-value="tcp://localhost:61616"/>
+value="tcp://mu.lti.cs.cmu.edu:61616"/>
 <parameter name="endpoint"
-value="QAqueue"/>
+value="ScnlpQueue"/>
 <parameter name="timeout"
-value="100000"/>
+value="60000"/>
 <parameter name="getmetatimeout"
-value="100000"/>
+value="60000"/>
 <parameter name="cpctimeout"
-value="100000"/>
+value="60000"/>
 </parameters>
 </customResourceSpecifier>

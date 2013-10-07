@@ -4,26 +4,28 @@
   <primitive>false</primitive>
   
   
+  
   <delegateAnalysisEngineSpecifiers>
     <delegateAnalysisEngine key="AnswerScorer">
-      <import location="../descriptors/AnswerScorer.xml"/>
+      <import location="./descriptors/AnswerScorer.xml"/>
     </delegateAnalysisEngine>
     <delegateAnalysisEngine key="NGramAnnotator">
-      <import location="../descriptors/NGramAnnotator.xml"/>
+    
+      <import location="./descriptors/NGramAnnotator.xml"/>
     </delegateAnalysisEngine>
     <delegateAnalysisEngine key="TestElementAnnotator">
     
       
-      <import location="../descriptors/TestElementAnnotator.xml"/>
+      <import location="./descriptors/TestElementAnnotator.xml"/>
     </delegateAnalysisEngine>
     <delegateAnalysisEngine key="TokenAnnotator">
-      <import location="../descriptors/TokenAnnotator.xml"/>
+      <import location="./descriptors/TokenAnnotator.xml"/>
     </delegateAnalysisEngine>
  <delegateAnalysisEngine key="Evaluator">
-      <import location="../descriptors/Evaluator.xml"/>
+      <import location="./descriptors/Evaluator.xml"/>
     </delegateAnalysisEngine>
     <!--  <delegateAnalysisEngine key="Evaluator">
-      <import location="../descriptors/Evaluator.xml"/>
+      <import location="./Evaluator.xml"/>
     </delegateAnalysisEngine> -->
     </delegateAnalysisEngineSpecifiers>
   <!--

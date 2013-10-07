@@ -8,10 +8,10 @@ value="tcp://localhost:61616"/>
 <parameter name="endpoint"
 value="QAqueue"/>
 <parameter name="timeout"
-value="10000"/>
+value="100000"/>
 <parameter name="getmetatimeout"
-value="10000"/>
+value="100000"/>
 <parameter name="cpctimeout"
-value="10000"/>
+value="100000"/>
 </parameters>
 </customResourceSpecifier>
