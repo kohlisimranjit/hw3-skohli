@@ -10,7 +10,7 @@ import org.apache.uima.cas.FSIndex;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.tcas.Annotation;
-
+//import org.cleartk.token.type.*;
 import edu.cmu.deiis.constants.AnnotatorConstants;
 import edu.cmu.deiis.subTypes.AnnotatedAnswer;
 import edu.cmu.deiis.subTypes.AnnotatedNGram;
@@ -20,18 +20,34 @@ import edu.cmu.deiis.subTypes.Document;
 import edu.cmu.deiis.subTypes.NGramMatrix;
 import edu.cmu.deiis.subTypes.TokenizedDocument;
 import edu.cmu.deiis.subTypes.TokenizedSentence;
-import org.cleartk.util.TypeSystem;
-import org.cleartk.token.TypeSystem;
-import org.cleartk.ne.TypeSystem;
-import org.cleartk.syntax.constituent.TypeSystem;
-import org.cleartk.syntax.dependency.TypeSystem;
-import org.cleartk.srl.TypeSystem;
-import org.cleartk.timeml.TypeSystem;
+import org.cleartk.token.type.Sentence;
+import org.cleartk.token.type.Token;
+//import org.cleartk.token.type.
 public class AnswerScorer extends JCasAnnotator_ImplBase {
 	static int intC = 0;
 
 	@Override
 	public void process(JCas jCas) throws AnalysisEngineProcessException {
+		
+		
+		System.out.println("Entered \t"+this.getClass().getName());
+
+		FSIndex<Annotation> cleartkSentenceIndex = jCas
+				.getAnnotationIndex(org.cleartk.token.type.Sentence.type);		//org.cleartk.token.type.Sentence
+		
+		
+		
+		Iterator<Annotation> cleartkSentenceIterator = cleartkSentenceIndex.iterator();
+		
+		
+		while(cleartkSentenceIterator.hasNext())
+		{
+			Sentence sentence=(Sentence) cleartkSentenceIterator.next();
+		
+		
+		System.out.println(sentence.getBegin()+"\t"+sentence.getScore());
+		}
+		
 		
 		FSIndex<Annotation> nGramIndex = jCas
 				.getAnnotationIndex(NGramMatrix.type);
