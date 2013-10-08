@@ -183,9 +183,12 @@ public class AnswerScorer extends JCasAnnotator_ImplBase {
 		String pers=map.get(nGramString);
 	if(pers!=null && pers.equals("PERSON"))
 		confidence=confidence+0.001;
-		
+	
+	//if(confidence>1)
+		//confidence=1;
 		}
 		// nGramSentence.get
+		
 		confidence /= nGramSentence.size();
 
 		double fluffFacor = ((double) answerText.split(" ").length)
@@ -196,6 +199,8 @@ public class AnswerScorer extends JCasAnnotator_ImplBase {
 			confidence = confidence * fluffFacor;
 		}
 		
+		if(confidence>1)
+			confidence=1;
 		return confidence;
 
 	}
