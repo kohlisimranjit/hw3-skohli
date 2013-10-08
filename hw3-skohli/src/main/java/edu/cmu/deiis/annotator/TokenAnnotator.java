@@ -81,7 +81,7 @@ public class TokenAnnotator extends JCasAnnotator_ImplBase {
 			for (int j = 0; j < answerTokenText.length; j++) {
 				annotatedToken = new AnnotatedToken(jCas);
 				annotatedToken.setTokenText(answerTokenText[j]);
-				
+				annotatedToken.setCasProcessorId(this.getClass().getName());
 				annotatedToken.setBegin(begin);
 				annotatedToken.setEnd(annotatedToken.getBegin()+annotatedToken.getTokenText().length());
 				begin=annotatedToken.getEnd()+1;

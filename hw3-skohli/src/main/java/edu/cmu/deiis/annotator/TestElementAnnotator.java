@@ -61,6 +61,7 @@ public class TestElementAnnotator extends JCasAnnotator_ImplBase {
 
 			lines[i + 1] = lines[i + 1].substring(0,
 					lines[i + 1].lastIndexOf("."));
+			annotatedAnswer.setCasProcessorId(this.getClass().getName());
 			annotatedAnswer.setText(lines[i + 1].substring(sentenceStart));
 			annotatedAnswer.setBegin(sentenceStart);
 			annotatedAnswer.setEnd(lines[i + 1].length() - 1);

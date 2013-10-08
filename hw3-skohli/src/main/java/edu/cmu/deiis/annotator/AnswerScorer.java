@@ -2,7 +2,9 @@ package edu.cmu.deiis.annotator;
 /**This annotator class assigns Confidence scores to each answer.
  * Based upon the threshold score it will assign a score of 1 or 0 to the answer.
  */
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -10,6 +12,10 @@ import org.apache.uima.cas.FSIndex;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.tcas.Annotation;
+
+
+
+
 //import org.cleartk.token.type.*;
 import edu.cmu.deiis.constants.AnnotatorConstants;
 import edu.cmu.deiis.subTypes.AnnotatedAnswer;
@@ -20,9 +26,15 @@ import edu.cmu.deiis.subTypes.Document;
 import edu.cmu.deiis.subTypes.NGramMatrix;
 import edu.cmu.deiis.subTypes.TokenizedDocument;
 import edu.cmu.deiis.subTypes.TokenizedSentence;
+import edu.stanford.nlp.dcoref.CoNLL2011DocumentReader.NamedEntityAnnotation;
+import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
+import edu.stanford.nlp.util.CoreMap;
+
+import org.cleartk.ne.type.NamedEntityMention;
 import org.cleartk.token.type.Sentence;
 import org.cleartk.token.type.Token;
 //import org.cleartk.token.type.
+
 public class AnswerScorer extends JCasAnnotator_ImplBase {
 	static int intC = 0;
 
@@ -30,22 +42,32 @@ public class AnswerScorer extends JCasAnnotator_ImplBase {
 	public void process(JCas jCas) throws AnalysisEngineProcessException {
 		
 		
-		System.out.println("Entered \t"+this.getClass().getName());
+		System.out.println("Entered \t"+this.getClass().getName()+"hw3");
 
-		FSIndex<Annotation> cleartkSentenceIndex = jCas
-				.getAnnotationIndex(org.cleartk.token.type.Sentence.type);		//org.cleartk.token.type.Sentence
+		FSIndex<Annotation> cleartkNamedEntityMentionIndex = jCas
+				.getAnnotationIndex(NamedEntityMention.type);		//org.cleartk.token.type.Sentence
+	//	FSIndex<Annotation> namedEntityIndex = jCas.getAnnotationIndex(edu.stanford.nlp.dcoref.CoNLL2011DocumentReader.NamedEntityAnnotation);	
 		
 		
-		
-		Iterator<Annotation> cleartkSentenceIterator = cleartkSentenceIndex.iterator();
-		
+		Iterator<Annotation> cleartkNamedEntityMentionIterator = cleartkNamedEntityMentionIndex.iterator();
+	   // List<CoreMap> sentences = jCas.getAnnotationIndex(SentencesAnnotation.type);
+
 		System.out.println("Sentence Iterator");
-		while(cleartkSentenceIterator.hasNext())
+		HashMap<String, String> map=new HashMap<String, String>();
+		//NamedEntityMention qMen=(NamedEntityMention) cleartkNamedEntityMentionIterator.next();
+		//qMen.getMentionType();
+		int line=0;
+		while(cleartkNamedEntityMentionIterator.hasNext())
 		{
-			Sentence sentence=(Sentence) cleartkSentenceIterator.next();
-		
-		
-		System.out.println(sentence.toString()+"\t"+sentence.getCoveredText()+"\t"+sentence.getBegin()+"\t"+sentence.getScore());
+			NamedEntityMention sentence=(NamedEntityMention) cleartkNamedEntityMentionIterator.next();
+			org.cleartk.ne.type.NamedEntity nameEntity=sentence.getMentionedEntity();
+			FSArray fs=nameEntity.getMentions();
+			System.out.println("lineNo"+line+++"sentence.getCoveredText();"+sentence.getCoveredText());	
+			//System.out.println("EntityId"+fs.get(0).toString());
+			map.put(sentence.getCoveredText(), sentence.getMentionType());
+			System.out.println(sentence.getMentionType());
+			//sentence.get(SentencesAnnotation.class);
+		//System.out.println(sentence.toString()+"\t"+sentence.getCoveredText()+"\t"+sentence.getBegin()+"\t"+sentence.getScore());
 		}
 		
 		
@@ -104,7 +126,7 @@ public class AnswerScorer extends JCasAnnotator_ImplBase {
 				FSArray nGramSentence = (FSArray)inner.get(j-1);
 		//		inner.set(j, nGramSentence);
 				double currConfidence =0;
-				currConfidence=getNGramConfidence(annotatedQuestion,nGramSentence, annotatedAnswer);
+				currConfidence=getNGramConfidence(annotatedQuestion,nGramSentence, annotatedAnswer,map);
 				
 				nGramConfidence += weight * currConfidence;
 				// System.out.println("nGramConfidence"+nGramConfidence+"\t equalizer"+equalizer);
@@ -142,7 +164,9 @@ public class AnswerScorer extends JCasAnnotator_ImplBase {
 	
 
 	double getNGramConfidence(AnnotatedQuestion annotatedQuestion,
-			FSArray nGramSentence, AnnotatedAnswer annotatedAnswer) {
+			FSArray nGramSentence, AnnotatedAnswer annotatedAnswer, HashMap<String, String> map) {
+		
+		
 		String questionText = annotatedQuestion.getText();
 		String answerText = annotatedAnswer.getText();
 		// System.out.println(questionText+"\t"+answerText);
@@ -156,6 +180,10 @@ public class AnswerScorer extends JCasAnnotator_ImplBase {
 				confidence++;
 			// System.out.println(annotatedNGram.getNGramToken());
 
+		String pers=map.get(nGramString);
+	if(pers!=null && pers.equals("PERSON"))
+		confidence=confidence+0.001;
+		
 		}
 		// nGramSentence.get
 		confidence /= nGramSentence.size();

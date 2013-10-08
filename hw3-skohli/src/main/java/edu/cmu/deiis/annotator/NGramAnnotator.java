@@ -70,7 +70,7 @@ public class NGramAnnotator extends JCasAnnotator_ImplBase {
 				int weight = 1;//j;
 				equalizer += weight;
 				FSArray nGramSentence = nGramTokens(tokenizedAnswerInstance, j,
-						jCas);
+						jCas,this);
 				inner.set(j-1, nGramSentence);
 			//	double currConfidence = getNGramConfidence(annotatedQuestion,nGramSentence, annotatedAnswer);
 				
@@ -92,7 +92,7 @@ public class NGramAnnotator extends JCasAnnotator_ImplBase {
 	// System.out.println("Fin");
 
 	static FSArray nGramTokens(TokenizedSentence tokenizedSentence, int nGram,
-			JCas jCas) {
+			JCas jCas, NGramAnnotator nGramAnnotator) {
 		FSArray tokenArray = tokenizedSentence.getAnnotatedTokens();
 		FSArray nGramSentence = new FSArray(jCas, tokenArray.size()
 				- (nGram - 1));
@@ -109,6 +109,7 @@ public class NGramAnnotator extends JCasAnnotator_ImplBase {
 			}
 			AnnotatedNGram annotatedNGram = new AnnotatedNGram(jCas);
 			annotatedNGram.setNGramToken(text.trim());
+			annotatedNGram.setCasProcessorId(nGramAnnotator.getClass().getName());
 			annotatedNGram.setBegin(begin);
 			annotatedNGram.setEnd(annotatedNGram.getBegin() + text.length());
 			

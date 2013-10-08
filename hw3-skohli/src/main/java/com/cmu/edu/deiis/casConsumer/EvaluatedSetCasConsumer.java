@@ -27,7 +27,7 @@ public class EvaluatedSetCasConsumer extends CasConsumer_ImplBase{
 		
 		cas.getAnnotationIndex(type);
 		//Type Sentence=new Sentence(cas);
-		System.out.println("--------------aaaaaaaaaaaaaaa-----------------------");
+		//System.out.println("--------------aaaaaaaaaaaaaaa-----------------------");
 		AnnotationIndex<AnnotationFS> afs=	cas.getAnnotationIndex(type);
 		
 		Iterator<AnnotationFS> sentenceIndexIterator =afs.iterator();
@@ -36,7 +36,7 @@ public class EvaluatedSetCasConsumer extends CasConsumer_ImplBase{
 		{
 			Object obj=sentenceIndexIterator.next();
 			
-			System.out.println("OBJCLASS->"+obj.getClass()+"\t String"+obj.toString());
+		//	System.out.println("OBJCLASS->"+obj.getClass()+"\t String"+obj.toString());
 		}
 		//cas.getAnnotationIndex(Sentence);
 		// TODO Auto-generated method stub
