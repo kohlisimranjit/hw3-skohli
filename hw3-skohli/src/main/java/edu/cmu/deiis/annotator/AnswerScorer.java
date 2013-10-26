@@ -37,7 +37,11 @@ import org.cleartk.token.type.Token;
 
 public class AnswerScorer extends JCasAnnotator_ImplBase {
 	static int intC = 0;
-
+	/**
+	   * Assigns final score to each answer string 
+	   * If named entities are matched a higher scoe is assigned else score is penalized
+	   * @param jcas JCas object that provides access to the CAS.
+	   */
 	@Override
 	public void process(JCas jCas) throws AnalysisEngineProcessException {
 		
